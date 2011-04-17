@@ -1,0 +1,17 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 0.2
+description: Titanium Mobile Module for iOS Keychain
+author: Ruben Fonseca
+license: MIT
+copyright: Copyright (c) 2011 by Ruben Fonseca
+
+
+# these should not be edited
+name: keychain
+moduleid: com.0x82.keychain
+guid: 0c76bec2-d685-4970-b12c-91eacecd8fc1
+platform: iphone
+minsdk: 1.6.1

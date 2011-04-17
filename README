@@ -1,0 +1,10 @@
+Appcelerator Titanium iPhone Module Project
+===========================================
+
+This is a Titanoum Mobile iOS module for accessing the iOS keychain.
+
+Using this module you can set, get and delete password directly on the iOS keychain, storing them in a secure, standard way.
+
+Please check the example/app.js for how the API of this moudle.
+
+Cheers!
