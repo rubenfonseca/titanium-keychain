@@ -14,4 +14,4 @@ name: keychain
 moduleid: com.0x82.keychain
 guid: 0c76bec2-d685-4970-b12c-91eacecd8fc1
 platform: iphone
-minsdk: 1.6.1
+minsdk: 1.7.0
