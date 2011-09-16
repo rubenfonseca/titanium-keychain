@@ -7,7 +7,7 @@ window.add(label);
 window.open();
 
 // load the keychain module
-var keychain = require('com.0x82.keychain');
+var keychain = require('com.0x82.key.chain');
 Ti.API.info("module is => " + keychain);
 
 // create three buttons to set, get, and delete passwords

@@ -4,14 +4,14 @@
  * Appcelerator Titanium is Copyright (c) 2009-2010 by Appcelerator, Inc.
  * and licensed under the Apache Public License (version 2)
  */
-#import "Com0x82KeychainModule.h"
+#import "Com0x82KeyChainModule.h"
 #import "TiBase.h"
 #import "TiHost.h"
 #import "TiUtils.h"
 
 #import "SSKeychain.h"
 
-@implementation Com0x82KeychainModule
+@implementation Com0x82KeyChainModule
 
 #pragma mark Internal
 
@@ -24,7 +24,7 @@
 // this is generated for your module, please do not change it
 -(NSString*)moduleId
 {
-	return @"com.0x82.keychain";
+	return @"com.0x82.key.chain";
 }
 
 #pragma mark Lifecycle

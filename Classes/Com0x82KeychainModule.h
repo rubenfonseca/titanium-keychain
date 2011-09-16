@@ -6,7 +6,7 @@
  */
 #import "TiModule.h"
 
-@interface Com0x82KeychainModule : TiModule 
+@interface Com0x82KeyChainModule : TiModule 
 {
 }
 

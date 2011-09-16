@@ -10,7 +10,7 @@ information for a specific service and account.
 
 To access this module from JavaScript, you would do the following:
 
-	var keychain = require("com.0x82.keychain");
+	var keychain = require("com.0x82.key.chain");
 
 The keychain variable is a reference to the Module object.	
 
