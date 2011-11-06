@@ -6,6 +6,14 @@ This Titanium Module allows you to interact with the iOS Keychain in
 a tidy and simple way. This allows you to securely store and retrieve login 
 information for a specific service and account.
 
+## Installation
+
+[http://wiki.appcelerator.org/display/tis/Using+Titanium+Modules]()
+
+## Changelog
+
+See [here](changelog.html)
+
 ## Accessing the keychain Module
 
 To access this module from JavaScript, you would do the following:
