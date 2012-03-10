@@ -6,15 +6,15 @@
 //  Copyright 2009-2010 Sam Soffes. All rights reserved.
 //
 
-#import "SSKeychain.h"
+#import "MySSKeychain.h"
 
-NSString *SSKeychainErrorDomain = @"com.samsoffes.sskeychain";
+NSString *MySSKeychainErrorDomain = @"com.samsoffes.sskeychain";
 
-@interface SSKeychain (PrivateMethods)
+@interface MySSKeychain (PrivateMethods)
 + (NSMutableDictionary *)_keychainQueryForService:(NSString *)service account:(NSString *)account;
 @end
 
-@implementation SSKeychain
+@implementation MySSKeychain
 
 #pragma mark Class Methods
 
@@ -54,7 +54,7 @@ NSString *SSKeychainErrorDomain = @"com.samsoffes.sskeychain";
 	}
 	
 	if (status != noErr && error != NULL) {
-		*error = [NSError errorWithDomain:SSKeychainErrorDomain code:status userInfo:nil];
+		*error = [NSError errorWithDomain:MySSKeychainErrorDomain code:status userInfo:nil];
 	}
 	
 	return result;
@@ -74,7 +74,7 @@ NSString *SSKeychainErrorDomain = @"com.samsoffes.sskeychain";
 	}
 	
 	if (status != noErr && error != NULL) {
-		*error = [NSError errorWithDomain:SSKeychainErrorDomain code:status userInfo:nil];
+		*error = [NSError errorWithDomain:MySSKeychainErrorDomain code:status userInfo:nil];
 	}
 	
 	return status == noErr;
@@ -99,7 +99,7 @@ NSString *SSKeychainErrorDomain = @"com.samsoffes.sskeychain";
 	}
 	
 	if (status != noErr && error != NULL) {
-		*error = [NSError errorWithDomain:SSKeychainErrorDomain code:status userInfo:nil];
+		*error = [NSError errorWithDomain:MySSKeychainErrorDomain code:status userInfo:nil];
 	}
 	
 	return status == noErr;

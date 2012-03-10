@@ -19,11 +19,11 @@ typedef enum {
 	SSKeychainErrorNotFound = errSecItemNotFound,
 	SSKeychainErrorInteractionNotAllowed = errSecInteractionNotAllowed,
 	SSKeychainErrorFailedToDecode = errSecDecode
-} SSKeychainErrorCode;
+} MySSKeychainErrorCode;
 
-extern NSString *SSKeychainErrorDomain;
+extern NSString *MySSKeychainErrorDomain;
 
-@interface SSKeychain : NSObject {
+@interface MySSKeychain : NSObject {
 	
 }
 

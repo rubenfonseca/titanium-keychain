@@ -26,8 +26,8 @@
 		24DD6CFA1134B3F500162E58 /* Com0x82KeychainModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* Com0x82KeychainModule.m */; };
 		24DE9E1111C5FE74003F90F6 /* Com0x82KeychainModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* Com0x82KeychainModuleAssets.h */; };
 		24DE9E1211C5FE74003F90F6 /* Com0x82KeychainModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* Com0x82KeychainModuleAssets.m */; };
-		3E682732135B2A8900A6BFDA /* SSKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E682730135B2A8900A6BFDA /* SSKeychain.h */; };
-		3E682733135B2A8900A6BFDA /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E682731135B2A8900A6BFDA /* SSKeychain.m */; };
+		3E682732135B2A8900A6BFDA /* MySSKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E682730135B2A8900A6BFDA /* MySSKeychain.h */; };
+		3E682733135B2A8900A6BFDA /* MySSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E682731135B2A8900A6BFDA /* MySSKeychain.m */; };
 		3E682735135B2AC600A6BFDA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E682734135B2AC600A6BFDA /* Security.framework */; };
 		AA747D9F0F9514B9006C5449 /* Com0x82Keychain_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* Com0x82Keychain_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
@@ -49,8 +49,8 @@
 		24DD6D1B1134B66800162E58 /* titanium.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = titanium.xcconfig; sourceTree = "<group>"; };
 		24DE9E0F11C5FE74003F90F6 /* Com0x82KeychainModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Com0x82KeychainModuleAssets.h; path = Classes/Com0x82KeychainModuleAssets.h; sourceTree = "<group>"; };
 		24DE9E1011C5FE74003F90F6 /* Com0x82KeychainModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Com0x82KeychainModuleAssets.m; path = Classes/Com0x82KeychainModuleAssets.m; sourceTree = "<group>"; };
-		3E682730135B2A8900A6BFDA /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKeychain.h; path = Classes/SSKeychain.h; sourceTree = "<group>"; };
-		3E682731135B2A8900A6BFDA /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSKeychain.m; path = Classes/SSKeychain.m; sourceTree = "<group>"; };
+		3E682730135B2A8900A6BFDA /* MySSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MySSKeychain.h; path = Classes/MySSKeychain.h; sourceTree = "<group>"; };
+		3E682731135B2A8900A6BFDA /* MySSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MySSKeychain.m; path = Classes/MySSKeychain.m; sourceTree = "<group>"; };
 		3E682734135B2AC600A6BFDA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		AA747D9E0F9514B9006C5449 /* Com0x82Keychain_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Com0x82Keychain_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -112,8 +112,8 @@
 		32C88DFF0371C24200C91783 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				3E682730135B2A8900A6BFDA /* SSKeychain.h */,
-				3E682731135B2A8900A6BFDA /* SSKeychain.m */,
+				3E682730135B2A8900A6BFDA /* MySSKeychain.h */,
+				3E682731135B2A8900A6BFDA /* MySSKeychain.m */,
 				AA747D9E0F9514B9006C5449 /* Com0x82Keychain_Prefix.pch */,
 				24DD6D1B1134B66800162E58 /* titanium.xcconfig */,
 			);
@@ -130,7 +130,7 @@
 				AA747D9F0F9514B9006C5449 /* Com0x82Keychain_Prefix.pch in Headers */,
 				24DD6CF91134B3F500162E58 /* Com0x82KeychainModule.h in Headers */,
 				24DE9E1111C5FE74003F90F6 /* Com0x82KeychainModuleAssets.h in Headers */,
-				3E682732135B2A8900A6BFDA /* SSKeychain.h in Headers */,
+				3E682732135B2A8900A6BFDA /* MySSKeychain.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +206,7 @@
 			files = (
 				24DD6CFA1134B3F500162E58 /* Com0x82KeychainModule.m in Sources */,
 				24DE9E1211C5FE74003F90F6 /* Com0x82KeychainModuleAssets.m in Sources */,
-				3E682733135B2A8900A6BFDA /* SSKeychain.m in Sources */,
+				3E682733135B2A8900A6BFDA /* MySSKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

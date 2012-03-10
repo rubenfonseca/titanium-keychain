@@ -9,7 +9,7 @@
 #import "TiHost.h"
 #import "TiUtils.h"
 
-#import "SSKeychain.h"
+#import "MySSKeychain.h"
 
 @implementation Com0x82KeyChainModule
 
@@ -55,7 +55,7 @@
   ENSURE_STRING([args objectAtIndex:0]);
   ENSURE_STRING([args objectAtIndex:1]);
   
-  NSString *password = [SSKeychain passwordForService:[args objectAtIndex:0] account:[args objectAtIndex:1]];
+  NSString *password = [MySSKeychain passwordForService:[args objectAtIndex:0] account:[args objectAtIndex:1]];
   
   return password;
 }
@@ -66,7 +66,7 @@
   ENSURE_STRING([args objectAtIndex:1]);
   ENSURE_STRING([args objectAtIndex:2]);
   
-  [SSKeychain setPassword:[args objectAtIndex:0] forService:[args objectAtIndex:1] account:[args objectAtIndex:2]];
+  [MySSKeychain setPassword:[args objectAtIndex:0] forService:[args objectAtIndex:1] account:[args objectAtIndex:2]];
 }
 
 -(void)deletePasswordForService:(id)args {
@@ -74,7 +74,7 @@
   ENSURE_STRING([args objectAtIndex:0]);
   ENSURE_STRING([args objectAtIndex:1]);
 
-  [SSKeychain deletePasswordForService:[args objectAtIndex:0] account:[args objectAtIndex:1]];
+  [MySSKeychain deletePasswordForService:[args objectAtIndex:0] account:[args objectAtIndex:1]];
 }
 
 @end
