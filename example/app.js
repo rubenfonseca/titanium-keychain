@@ -48,11 +48,22 @@ window.add(button3);
 window.add(label);
 
 button1.addEventListener('click', function(e) {
+  var options = {
+    accessible: keychain.ATTR_ACCESSIBLE_WHEN_UNLOCKED,
+    access_group: "BW3GR862AK.com.0x82.key.chain"
+  };
+
   keychain.setPasswordForService('abracadabra', 'service', 'account');
+
   label.text = 'Password setted';
 });
 
 button2.addEventListener('click', function(e) {
+  var options = {
+    accessible: keychain.ATTR_ACCESSIBLE_WHEN_UNLOCKED,
+    access_group: "BW3GR862AK.com.0x82.key.chain"
+  };
+
   var pass = keychain.getPasswordForService('service', 'account');
   alert(pass);
   label.text = '';

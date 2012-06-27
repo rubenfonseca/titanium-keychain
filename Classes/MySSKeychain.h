@@ -27,13 +27,13 @@ extern NSString *MySSKeychainErrorDomain;
 	
 }
 
-+ (NSString *)passwordForService:(NSString *)service account:(NSString *)account;
-+ (NSString *)passwordForService:(NSString *)service account:(NSString *)account error:(NSError **)error;
++ (NSString *)passwordForService:(NSString *)service account:(NSString *)account options:(NSDictionary *)options;
++ (NSString *)passwordForService:(NSString *)service account:(NSString *)account options:(NSDictionary *)options error:(NSError **)error;
 
-+ (BOOL)deletePasswordForService:(NSString *)service account:(NSString *)account;
-+ (BOOL)deletePasswordForService:(NSString *)service account:(NSString *)account error:(NSError **)error;
++ (BOOL)deletePasswordForService:(NSString *)service account:(NSString *)account options:(NSDictionary *)options;
++ (BOOL)deletePasswordForService:(NSString *)service account:(NSString *)account options:(NSDictionary *)options error:(NSError **)error;
 
-+ (BOOL)setPassword:(NSString *)password forService:(NSString *)service account:(NSString *)account;
-+ (BOOL)setPassword:(NSString *)password forService:(NSString *)service account:(NSString *)account error:(NSError **)error;
++ (BOOL)setPassword:(NSString *)password forService:(NSString *)service account:(NSString *)account options:(NSDictionary *)options;
++ (BOOL)setPassword:(NSString *)password forService:(NSString *)service account:(NSString *)account options:(NSDictionary *)options error:(NSError **)error;
 
 @end

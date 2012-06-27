@@ -11,6 +11,11 @@
 
 #import "MySSKeychain.h"
 
+@interface Com0x82KeyChainModule (Private)
+	-(NSDictionary *)_validateOptions:(NSDictionary *)options;
+	-(id)_validateAccessabilityOption:(NSNumber *)option;
+@end
+
 @implementation Com0x82KeyChainModule
 
 #pragma mark Internal
@@ -51,30 +56,147 @@
 #pragma Public APIs
 
 -(id)getPasswordForService:(id)args {
-  ENSURE_ARG_COUNT(args, 2);
-  ENSURE_STRING([args objectAtIndex:0]);
-  ENSURE_STRING([args objectAtIndex:1]);
+	enum {
+		kArgService = 0,
+		kArgAccount,
+		kArgCount,
+		kArgOptions = kArgCount
+	};
+	
+	ENSURE_TYPE(args, NSArray);
+	ENSURE_ARG_COUNT(args, kArgCount);
+	
+	NSString *service = [TiUtils stringValue:[args objectAtIndex:kArgService]];
+	NSString *account = [TiUtils stringValue:[args objectAtIndex:kArgAccount]];
+	NSDictionary *options = nil;
+	if([args count] > kArgOptions) {
+		ENSURE_TYPE([args objectAtIndex:kArgOptions], NSDictionary);
+		options = [self _validateOptions:[args objectAtIndex:kArgOptions]];
+	}
   
-  NSString *password = [MySSKeychain passwordForService:[args objectAtIndex:0] account:[args objectAtIndex:1]];
+	NSError *error = NULL;
+  NSString *password = [MySSKeychain passwordForService:service account:account options:options error:&error];
+	
+	if(error != nil) {
+		NSLog(@"Keychain Get error: %@", [error description]);
+	}
   
   return password;
 }
 
 -(void)setPasswordForService:(id)args {
-  ENSURE_ARG_COUNT(args, 3);
-  ENSURE_STRING([args objectAtIndex:0]);
-  ENSURE_STRING([args objectAtIndex:1]);
-  ENSURE_STRING([args objectAtIndex:2]);
+	enum {
+		kArgPassword = 0,
+		kArgService,
+		kArgAccount,
+		kArgCount,
+		kArgOptions = kArgCount
+	};
+	
+	ENSURE_TYPE(args, NSArray);
+	ENSURE_ARG_COUNT(args, kArgCount);
+	
+	NSString *password = [TiUtils stringValue:[args objectAtIndex:kArgPassword]];
+	NSString *service = [TiUtils stringValue:[args objectAtIndex:kArgService]];
+	NSString *account = [TiUtils stringValue:[args objectAtIndex:kArgAccount]];
+	NSDictionary *options = nil;
+	if([args count] > kArgOptions) {
+		ENSURE_TYPE([args objectAtIndex:kArgOptions], NSDictionary);
+		options = [self _validateOptions:[args objectAtIndex:kArgOptions]];
+	}
   
-  [MySSKeychain setPassword:[args objectAtIndex:0] forService:[args objectAtIndex:1] account:[args objectAtIndex:2]];
+	NSError *error = NULL;
+  [MySSKeychain setPassword:password forService:service account:account options:options error:&error];
+	
+	if(error != nil) {
+		NSLog(@"Keychain Set error: %@", [error description]);
+	}
 }
 
 -(void)deletePasswordForService:(id)args {
-  ENSURE_ARG_COUNT(args, 2);
-  ENSURE_STRING([args objectAtIndex:0]);
-  ENSURE_STRING([args objectAtIndex:1]);
+	enum {
+		kArgService = 0,
+		kArgAccount,
+		kArgCount,
+		kArgOptions = kArgCount
+	};
+	
+	ENSURE_TYPE(args, NSArray);
+	ENSURE_ARG_COUNT(args, kArgCount);
+	
+	NSString *service = [TiUtils stringValue:[args objectAtIndex:kArgService]];
+	NSString *account = [TiUtils stringValue:[args objectAtIndex:kArgAccount]];
+	NSDictionary *options = nil;
+	if([args count] > kArgOptions) {
+		ENSURE_TYPE([args objectAtIndex:kArgOptions], NSDictionary);
+		options = [self _validateOptions:[args objectAtIndex:kArgOptions]];
+	}
 
-  [MySSKeychain deletePasswordForService:[args objectAtIndex:0] account:[args objectAtIndex:1]];
+	NSError *error = NULL;
+  [MySSKeychain deletePasswordForService:service account:account options:options error:&error];
+	
+	if(error != nil) {
+		NSLog(@"Keychain Delete error: %@", [error description]);
+	}
 }
+
+-(NSDictionary *)_validateOptions:(NSDictionary *)options {
+	if(options == nil)
+		return options;
+	
+	NSMutableDictionary *newDict = [NSMutableDictionary dictionaryWithCapacity:[options count]];
+	
+	for(NSString *key in options) {
+		id value = [options valueForKey:key];
+		
+		if([key isEqualToString:[self ATTR_ACCESSIBLE]]) {
+			[newDict setObject:[self _validateAccessabilityOption:[TiUtils numberFromObject:value]] forKey:(id)kSecAttrAccessible];
+		} else if([key isEqualToString:[self ATTR_ACCESS_GROUP]]) {
+			[newDict setObject:[TiUtils stringValue:value] forKey:(id)kSecAttrAccessGroup];
+		} else {
+			NSLog(@"Unkown keychain option key %@", key);
+		}
+	}
+	
+	return newDict;
+}
+
+-(id)_validateAccessabilityOption:(NSNumber *)option {
+	switch([option intValue]) {
+		case kAttrAccessibleAfterFirstUnlock:
+			return (id)kSecAttrAccessibleAfterFirstUnlock;
+		case kAttrAccessibleWhenUnlocked:
+			return (id)kSecAttrAccessibleWhenUnlocked;
+		case kAttrAccessibleWhenUnlockedThisDeviceOnly:
+			return (id)kSecAttrAccessibleWhenUnlockedThisDeviceOnly;
+		case kAttrAccessibleAfterFirstUnlockThisDeviceOnly:
+			return (id)kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly;
+		case kAttrAccessibleAlways:
+			return (id)kSecAttrAccessibleAlways;
+		case kAttrAccessibleAlwaysThisDeviceOnly:
+			return (id)kSecAttrAccessibleAlwaysThisDeviceOnly;
+		default:
+			return nil;
+	}
+}
+
+enum {
+	kAttrAccessibleWhenUnlocked = 0,
+	kAttrAccessibleAfterFirstUnlock,
+	kAttrAccessibleAfterFirstUnlockThisDeviceOnly,
+	kAttrAccessibleAlways,
+	kAttrAccessibleAlwaysThisDeviceOnly,
+	kAttrAccessibleWhenUnlockedThisDeviceOnly
+};
+
+MAKE_SYSTEM_STR(ATTR_ACCESSIBLE, @"accessible")
+MAKE_SYSTEM_STR(ATTR_ACCESS_GROUP, @"access_group")
+
+MAKE_SYSTEM_PROP(ATTR_ACCESSIBLE_WHEN_UNLOCKED, kAttrAccessibleWhenUnlocked)
+MAKE_SYSTEM_PROP(ATTR_ACCESSIBLE_AFTER_FIRST_UNLOCK, kAttrAccessibleAfterFirstUnlock)
+MAKE_SYSTEM_PROP(ATTR_ACCESSIBLE_AFTER_FIRST_UNLOCK_THIS_DEVICE_ONLY, kAttrAccessibleAfterFirstUnlockThisDeviceOnly)
+MAKE_SYSTEM_PROP(ATTR_ACCESSIBLE_ALWAYS, kAttrAccessibleAlways)
+MAKE_SYSTEM_PROP(ATTR_ACCESSIBLE_ALWAYS_THIS_DEVICE_ONLY, kAttrAccessibleAlwaysThisDeviceOnly)
+MAKE_SYSTEM_PROP(ATTR_ACESSIBLE_WHEN_UNLOCKED_THIS_DEVICE_ONLY, kAttrAccessibleWhenUnlockedThisDeviceOnly)
 
 @end
