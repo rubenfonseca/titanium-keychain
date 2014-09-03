@@ -2,22 +2,14 @@ tmp
 bin
 build
 modules/
-.DS_Store
-*.swp
-*~.nib
 
-build/
-
-*.pbxuser
-*.perspective
-*.perspectivev3.DS_Store
-*.swp
-*~.nib
-
-build/
-
-*.pbxuser
+# XCode (and ancestors) per-user config (very noisy, and not relevant)
+*.mode1
+*.mode1v3
+*.mode2v3
 *.perspective
 *.perspectivev3
-
+*.pbxuser
 xcuserdata
+
+.DS_Store
