@@ -160,7 +160,7 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0710;
 			};
 			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "keychain" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -226,10 +226,6 @@
 			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv6,
-					"$(ARCHS_STANDARD_32_BIT)",
-				);
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = /tmp/Com0x82Keychain.dst;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -242,7 +238,6 @@
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = Com0x82Keychain;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TITANIUM_SDK = "/Library/Application Support/Titanium/mobilesdk/osx/$(TITANIUM_SDK_VERSION)";
 			};
 			name = Debug;
 		};
@@ -251,10 +246,6 @@
 			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv6,
-					"$(ARCHS_STANDARD_32_BIT)",
-				);
 				DSTROOT = /tmp/Com0x82Keychain.dst;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = s;
@@ -265,7 +256,6 @@
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = Com0x82Keychain;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TITANIUM_SDK = "/Library/Application Support/Titanium/mobilesdk/osx/$(TITANIUM_SDK_VERSION)";
 			};
 			name = Release;
 		};
@@ -273,18 +263,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					"$(ARCHS_STANDARD_32_BIT)",
-				);
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
-				TITANIUM_SDK = "/Library/Application Support/Titanium/mobilesdk/osx/$(TITANIUM_SDK_VERSION)";
 			};
 			name = Debug;
 		};
@@ -292,17 +279,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					"$(ARCHS_STANDARD_32_BIT)",
-				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
-				TITANIUM_SDK = "/Library/Application Support/Titanium/mobilesdk/osx/$(TITANIUM_SDK_VERSION)";
 			};
 			name = Release;
 		};
@@ -316,7 +298,6 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				PRODUCT_NAME = "Build & test";
-				TITANIUM_SDK = "/Library/Application Support/Titanium/mobilesdk/osx/$(TITANIUM_SDK_VERSION)";
 			};
 			name = Debug;
 		};
@@ -329,7 +310,6 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				PRODUCT_NAME = "Build & test";
-				TITANIUM_SDK = "/Library/Application Support/Titanium/mobilesdk/osx/$(TITANIUM_SDK_VERSION)";
 				ZERO_LINK = NO;
 			};
 			name = Release;
